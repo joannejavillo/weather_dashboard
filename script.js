@@ -1,25 +1,44 @@
-// this .on("click") function will trigger the AJAX call
-$("#city").on("click", function (event) {
+$(document).ready(function () {
 
-    //event.preventDefault
-    event.preventDefault();
+    // this .on("click") function will trigger the AJAX call
+    $(".submitBtn").on("click", function (event) {
+        event.preventDefault();
 
-    //where we grab the text from the input box
-    var cityWeather = $("#city").val();
+        var city = $("#city").val();
 
-    //URL
+        var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
 
-    var queryURL = "api.openweathermap.org/data/2.5/weather?id={city id}&appid={f6fe3d0e6489f66b9ccb2d38e5cdb94b}";
-         console.log(queryURL);        
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function(response) {
-    $("#cityWeather").text(JSON.stringify(response));
+            $("#temp").text("Temperature: " + response.main.temp)
+            $("#humid").text("Humidity: " + response.main.humidity)
+            $("#windSpeed").text("Wind Speed: " + response.wind.speed)
 
+            //UV index var
+
+            var lat = response.coord.lat;
+            var lon = response.coord.lon;
+
+            var uvURL = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
+
+            //$.ajax -> UV
+
+            $.ajax({
+                url: uvURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+
+            $("#uvIndex").text("UV Index: " + response.value)
+
+
+
+                //$.ajax -> Forecast
+            });
+        });
+    });
 });
-
-});
-
-
