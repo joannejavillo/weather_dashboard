@@ -18,7 +18,7 @@
     margin-top: 25px;
     margin-bottom: 75x;
     margin-right: 80px;
-    background-color: lightgray;
+    background-color: rgb(238, 217, 245);
     margin-left: 80px;
 
 }
@@ -39,7 +39,14 @@
 
 .indicator{
     text-align: center;
-    background-color:lightgray;
-   
+    background-color:lightgray;   
 
+}
+.col-md-6{
+    background-color: skyblue;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 75x;
+    margin-right: 80px;
+    margin-left: 80px;
 }

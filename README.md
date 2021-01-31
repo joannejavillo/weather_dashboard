@@ -20,6 +20,7 @@
 - CSS
 - Javascript
 - JQuery
+- Moments JS
 ---
 
 ## Requirements
