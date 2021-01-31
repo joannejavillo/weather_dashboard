@@ -7,13 +7,14 @@ $(document).ready(function () {
 
         var city = $("#city").val();
 
+
         var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            // console.log(response);
+             console.log(response);
 
             $("#temp").text("Temperature: " + response.main.temp + "°F")
             $("#humid").text("Humidity: " + response.main.humidity + "%")
@@ -21,9 +22,9 @@ $(document).ready(function () {
 
             //weather icon
             var weatherIcon = $("<img>");
-            weatherIcon.attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+            weatherIcon.attr("src", "https://api.openweathermap.org/img/w/" + response.weather[0].icon + ".png"
             );
-
+                console.log(weatherIcon);
             $("#icon").empty();
 
             //UV var index
@@ -31,7 +32,7 @@ $(document).ready(function () {
             var lat = response.coord.lat;
             var lon = response.coord.lon;
 
-            var uvIndexURL = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
+            var uvIndexURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
 
             //AJAX - UV
 
@@ -71,14 +72,14 @@ $(document).ready(function () {
             }).then(function (response) {
                 //console.log(response);
                 $("#forecast").text(JSON.stringify(response.list));
-                console.log(response.list);
+                //console.log(response.list);
                 $("#forecast").empty();
                 $("#box-1").empty();
                 for (var i = 0; i < response.list.length; i++) {
                     //console.log("1");
                     //response.list[i].dt_txt
                     if (response.list[i].dt_txt.includes("00:00:00")) {
-                        console.log(response.list[i]);
+                        //console.log(response.list[i]);
                         var day = $("<div>").addClass("forecast-box");
                         var p2 = $("<p>").text(response.list[i].dt_txt);
                         var wIcon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
@@ -95,7 +96,9 @@ $(document).ready(function () {
                 }
             })
 
-            curDate.text(moment().format('L'));
+            curDate.text(moment().format("dddd, MMMM Do YYYY"));
+
+            //console.log(curDate);
 
             function clearSearch(){
                 $("#city").trigger('reset');

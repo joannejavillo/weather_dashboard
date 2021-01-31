@@ -13,6 +13,16 @@
     
 }
 
+.col-md-9 {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 75x;
+    margin-right: 80px;
+    margin-left: 80px;
+    background-color: lightgray;
+
+}
+
 .submitBtn {
     background-color: #8c39eb;
     color: white;
@@ -28,10 +38,8 @@
 }
 
 .indicator{
-    position: relative;
-    width: 175px;
-    height: 25px;
-    background-color: white;
-    border: 1px  solid #dddddd;
+    text-align: center;
+    background-color:lightgray;
+   
 
 }
