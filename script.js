@@ -16,7 +16,7 @@ $(document).ready(function () {
         }).then(function (response) {
              console.log(response);
 
-            $("#temp").text("Temperature: " + response.main.temp + "°F")
+            $("#temp").text("Temperature: " + response.main.temp + "K")
             $("#humid").text("Humidity: " + response.main.humidity + "%")
             $("#windSpeed").text("Wind Speed: " + response.wind.speed + "MPH")
 
@@ -83,7 +83,7 @@ $(document).ready(function () {
                         var day = $("<div>").addClass("forecast-box");
                         var p2 = $("<p>").text(response.list[i].dt_txt);
                         var wIcon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
-                        var p = $("<p>").text("Temp: " + response.list[i].main.temp + "°F");
+                        var p = $("<p>").text("Temp: " + response.list[i].main.temp + "K");
                         var p1 = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
 
                         day.append(p2);
