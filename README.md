@@ -12,7 +12,7 @@
 
 
 ## Overview
-This project is created to provide a traveler who wants to know the weather in the city that he is in, so that he can plan his trip accordingly.
+ * This project is created to provide a traveler who wants to know the weather in the city that he is in, so that he can plan his trip accordingly.
 ---
 
 ## Technologies used
@@ -34,8 +34,8 @@ The following list of requirements were derived from the project brief and consi
 
 ## Links:
 
-1. Deployed :
-2. GitHub repo: 
+1. Deployed : [https://joannejavillo.github.io/weather_dashboard-app/]
+2. GitHub repo: [https://github.com/joannejavillo/weather_dashboard-app]
 ---
 
 ## Screenshots of the app:
