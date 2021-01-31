@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
 
-    //this .on("click") fundtion will trigger the AJAX call
+    //this .on("click") function will trigger the AJAX call
     $(".submitBtn").on("click", function (event) {
         event.preventDefault();
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
                 url: uvIndexURL,
                 method: "GET"
             }).then(function (response) {
-                console.log(response);
+               // console.log(response);
 
                 $("#uvIndex").text("UV Index: " + response.value)
 
@@ -47,7 +47,7 @@ $(document).ready(function () {
                     $("#indicator").removeClass();
                     $("#indicator").addClass("indicator indicator-success");
                 }
-                else if (response.value > 3 && response.value < 7){
+                else if (response.value > 3 && response.value < 7) {
                     $("#indicator").removeClass()
                     $("#indicator").addClass("indicator indicator-warning");
                 }
@@ -58,7 +58,22 @@ $(document).ready(function () {
             $("#place-name").text(response.name);
             $("#icon").append(weatherIcon);
 
+        //API for 5 day weather forecast
+
+        var fiveDayForecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
+
+        var curDate = $('.currentDay');
+
+        //AJAX for 5 day forecast
+
+        $.ajax({
+            url: fiveDayForecastURL,
+            method: "GET"
+        }).then(function(response){
+          //  console.log(response);
+        })
 
         });
+
     });
 });
