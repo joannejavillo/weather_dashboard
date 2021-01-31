@@ -39,7 +39,7 @@ $(document).ready(function () {
                 url: uvIndexURL,
                 method: "GET"
             }).then(function (response) {
-               // console.log(response);
+                // console.log(response);
 
                 $("#uvIndex").text("UV Index: " + response.value)
 
@@ -58,22 +58,50 @@ $(document).ready(function () {
             $("#place-name").text(response.name);
             $("#icon").append(weatherIcon);
 
-        //API for 5 day weather forecast
+            //API for 5 day weather forecast
 
-        var fiveDayForecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
+            var fiveDayForecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
 
-        var curDate = $('.currentDay');
+            var curDate = $('.currentDay');
+            //AJAX for 5 day forecast
 
-        //AJAX for 5 day forecast
+            $.ajax({
+                url: fiveDayForecastURL,
+                method: "GET"
+            }).then(function (response) {
+                //console.log(response);
+                $("#forecast").text(JSON.stringify(response.list));
+                console.log(response.list);
+                $("#forecast").empty();
+                $("#box-1").empty();
+                for (var i = 0; i < response.list.length; i++) {
+                    //console.log("1");
+                    //response.list[i].dt_txt
+                    if (response.list[i].dt_txt.includes("00:00:00")) {
+                        console.log(response.list[i]);
+                        var day = $("<div>").addClass("forecast-box");
+                        var p2 = $("<p>").text(response.list[i].dt_txt);
+                        var wIcon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
+                        var p = $("<p>").text("Temp: " + response.list[i].main.temp + "°F");
+                        var p1 = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
 
-        $.ajax({
-            url: fiveDayForecastURL,
-            method: "GET"
-        }).then(function(response){
-          //  console.log(response);
-        })
+                        day.append(p2);
+                        day.append(wIcon);
+                        day.append(p);
+                        day.append(p1);
 
+                        $("#forecast").append(day);
+                    }
+                }
+            })
+
+            curDate.text(moment().format('L'));
+
+            function clearSearch(){
+                $("#city").trigger('reset');
+            }
+            clearSearch()
         });
-
     });
-});
+})
+
