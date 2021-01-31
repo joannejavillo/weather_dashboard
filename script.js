@@ -7,6 +7,8 @@ $(document).ready(function () {
 
         var city = $("#city").val();
 
+        //var celsius = (response.main.temp-273).val();
+        //console.log(celsius)
 
         var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f6fe3d0e6489f66b9ccb2d38e5cdb94b`;
 

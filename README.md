@@ -3,12 +3,12 @@
 
 ## Table of Contents
 
-- Overview
-- Technologies Used
-- Requirements
-- Links
-- Screenshots of the App
-- License
+- [Overview]
+- [Technologies]
+- [Requirements]
+- [Links]
+- [Screenshots-of-the-App]
+- [License]
 
 
 ## Overview
@@ -41,8 +41,14 @@ The following list of requirements were derived from the project brief and consi
 
 ## Screenshots of the app:
 
-
-
+![screenshot-of-page](./img/weather1.png)
+- first image
+![screenshot-of-page](./img/weather2.png)
+- second image
+![screenshot-of-page](./img/weather3.png)
+- third image
 ---
+
 ## License
 This project is licensed under the terms of MIT License.
+
